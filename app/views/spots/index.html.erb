@@ -1,0 +1,35 @@
+<h1>Listing spots</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Note</th>
+    <th>Photo</th>
+    <th>Status</th>
+    <th>Address</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @spots.each do |spot| %>
+  <tr>
+    <td><%= spot.name %></td>
+    <td><%= spot.note %></td>
+    <td><%= spot.photo %></td>
+    <td><%= spot.status %></td>
+    <td><%= spot.address %></td>
+    <td><%= spot.latitude %></td>
+    <td><%= spot.longitude %></td>
+    <td><%= link_to 'Show', spot %></td>
+    <td><%= link_to 'Edit', edit_spot_path(spot) %></td>
+    <td><%= link_to 'Destroy', spot, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Spot', new_spot_path %>
