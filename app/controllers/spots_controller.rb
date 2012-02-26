@@ -1,4 +1,7 @@
 class SpotsController < ApplicationController
+  
+  before_filter :require_user
+  
   # GET /spots
   # GET /spots.json
   def index
@@ -25,6 +28,8 @@ class SpotsController < ApplicationController
   # GET /spots/new.json
   def new
     @spot = Spot.new
+    @spot.latitude = params[:lat]
+    @spot.longitude = params[:long]
 
     respond_to do |format|
       format.html # new.html.erb

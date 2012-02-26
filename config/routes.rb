@@ -1,4 +1,16 @@
 Skatespot::Application.routes.draw do
+  get "sessions/new"
+
+  get "sessions/create"
+
+  get "sessions/destroy"
+
+  get "welcome/index"
+
+  get "welcome/about"
+
+  resources :users
+
   resources :spots
 
   # The priority is based upon order of creation:

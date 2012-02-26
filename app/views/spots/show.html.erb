@@ -35,6 +35,14 @@
   <%= @spot.longitude %>
 </p>
 
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@spot.latitude}%2C#{@spot.longitude}" %>
+
+<h3>Nearby locations</h3>
+<ul>
+<% for spot in @spot.nearbys(10) %>
+  <li><%= link_to spot.address, spot %>  (<%= spot.distance.to_f.round(1) %> miles)</li>
+<% end %>
+</ul>
 
 <%= link_to 'Edit', edit_spot_path(@spot) %> |
 <%= link_to 'Back', spots_path %>

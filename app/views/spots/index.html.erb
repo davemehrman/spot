@@ -1,3 +1,26 @@
+<script type="text/javascript" charset="utf-8">
+
+function findLocation(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(foundLocation, noLocation);
+}
+function foundLocation(position)
+{
+  
+  var lat = position.coords.latitude;
+  var long = position.coords.longitude;
+  window.location = "<%= new_spot_path%>?lat=" + lat + "&long=" + long;
+  //alert("<%= new_spot_path%>?lat=" + lat + "&long=" + long);
+  //alert('Found location: ' + lat + ', ' + long);
+  
+}
+function noLocation()
+{
+  alert('Could not find location');
+}
+
+</script>
+
 <h1>Listing spots</h1>
 
 <table>
@@ -32,4 +55,4 @@
 
 <br />
 
-<%= link_to 'New Spot', new_spot_path %>
+<%= link_to 'Add Spot', new_spot_path, :onclick => "javascript:findLocation(event)" %>
