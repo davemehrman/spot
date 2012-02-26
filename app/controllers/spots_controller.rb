@@ -5,7 +5,7 @@ class SpotsController < ApplicationController
   # GET /spots
   # GET /spots.json
   def index
-    @spots = Spot.all
+    @spots = Spot.where(:user_id => @user)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -30,6 +30,7 @@ class SpotsController < ApplicationController
     @spot = Spot.new
     @spot.latitude = params[:lat]
     @spot.longitude = params[:long]
+   
 
     respond_to do |format|
       format.html # new.html.erb
@@ -46,6 +47,7 @@ class SpotsController < ApplicationController
   # POST /spots.json
   def create
     @spot = Spot.new(params[:spot])
+    @spot.user = @user
 
     respond_to do |format|
       if @spot.save

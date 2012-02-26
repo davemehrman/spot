@@ -7,7 +7,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+	<% if session[:uid] %>
+	  <p><%= link_to 'Edit', edit_user_url(session[:uid]) %> | <%= link_to "Sign Out", sessions_destroy_url, :method => :delete %></p>
+	<% end %>
+<p id="notice"><%= notice %></p>
 <%= yield %>
 
 </body>
