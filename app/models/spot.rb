@@ -6,4 +6,6 @@ class Spot < ActiveRecord::Base
   after_validation :reverse_geocode
   
   belongs_to :user
+  
+ 
 end

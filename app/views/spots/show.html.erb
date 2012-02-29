@@ -1,27 +1,12 @@
-<p id="notice"><%= notice %></p>
-
 <p>
-  <b>Name:</b>
-  <%= @spot.name %>
+  <h1><%= @spot.name %></h1>
 </p>
 
 <p>
-  <b>Note:</b>
-  <%= @spot.note %>
+  <h2><%= @spot.note %></h2>
 </p>
 
 <p>
-  <b>Photo:</b>
-  <%= @spot.photo %>
-</p>
-
-<p>
-  <b>Status:</b>
-  <%= @spot.status %>
-</p>
-
-<p>
-  <b>Address:</b>
   <%= @spot.address %>
 </p>
 
@@ -43,6 +28,6 @@
   <li><%= link_to spot.address, spot %>  (<%= spot.distance.to_f.round(1) %> miles)</li>
 <% end %>
 </ul>
-
+<%= link_to 'Destroy', spot, confirm: 'Are you sure?', method: :delete %>
 <%= link_to 'Edit', edit_spot_path(@spot) %> |
 <%= link_to 'Back', spots_path %>

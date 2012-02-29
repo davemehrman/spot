@@ -2,10 +2,13 @@ class SpotsController < ApplicationController
   
   before_filter :require_user
   
+  before_filter :user_spots
+  
+  #before_filter :user_spots
   # GET /spots
   # GET /spots.json
   def index
-    @spots = Spot.where(:user_id => @user)
+    #@spots
 
     respond_to do |format|
       format.html # index.html.erb

@@ -9,4 +9,8 @@ class ApplicationController < ActionController::Base
     @user = User.find(session[:uid])
   end
   
+  def user_spots
+    @spots = Spot.where(:user_id => @user)
+  end
+  
 end

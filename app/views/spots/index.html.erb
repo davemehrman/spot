@@ -1,60 +1,23 @@
-<script type="text/javascript" charset="utf-8">
-
-function findLocation(event) {
-  event.preventDefault();
-  navigator.geolocation.getCurrentPosition(foundLocation, noLocation);
-}
-function foundLocation(position)
-{
-  
-  var lat = position.coords.latitude;
-  var long = position.coords.longitude;
-  window.location = "<%= new_spot_path%>?lat=" + lat + "&long=" + long;
-  //alert("<%= new_spot_path%>?lat=" + lat + "&long=" + long);
-  //alert('Found location: ' + lat + ', ' + long);
-  
-}
-function noLocation()
-{
-  alert('Could not find location');
-}
-
-</script>
-
-<h1>Listing spots</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Note</th>
-    <th>Photo</th>
-    <th>Status</th>
-    <th>Address</th>
-    <th>Latitude</th>
-    <th>Longitude</th>
-    <th>username</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @spots.each do |spot| %>
-  <tr>
-    <td><%= spot.name %></td>
-    <td><%= spot.note %></td>
-    <td><%= spot.photo %></td>
-    <td><%= spot.status %></td>
-    <td><%= spot.address %></td>
-    <td><%= spot.latitude %></td>
-    <td><%= spot.longitude %></td>
-    <td><%= spot.user.username %></td>
-    <td><%= link_to 'Show', spot %></td>
-    <td><%= link_to 'Edit', edit_spot_path(spot) %></td>
-    <td><%= link_to 'Destroy', spot, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'Add Spot', new_spot_path, :onclick => "javascript:findLocation(event)" %>
+<%= render :partial => 'location_request' %>
+<nav id="tab-bar" class="page-spots">
+	<li id="tab-spots">
+		<a href="#">Spots</a>
+	</li>
+	<li id="tab-addSpot">
+		<a href="<%= new_spot_path %>" onclick="javascript:findLocation(event);">Add a spot</a>
+	</li>
+	<li id="tab-map">
+		<a href="#">Map View</a>
+	</li>	
+</nav><!-- #tab-bar -->
+<ul id="spots-list" class="table-view table-action">
+	<% @spots.each do |spot| %>
+	  <li>
+	  	<a href="<%=spot_url(spot) %>">
+	  		<h2><%= spot.name %></h2>
+	      <span class="relative-distance">0 miles</span>
+	      <span class="address"><%= spot.address %></span>
+	  	</a>
+	  </li>
+	<% end %>
+</ul>
