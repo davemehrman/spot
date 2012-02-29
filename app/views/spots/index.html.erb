@@ -4,7 +4,7 @@
 	  <li>
 	  	<a href="<%=spot_url(spot) %>">
 	  		<h2><%= spot.name %></h2>
-	      <span class="relative-distance"><%= spot.distance_from([41.8989953,-87.62365249999999]).to_f.round(1) %>miles</span>
+	      <span class="relative-distance"><%= spot.distance_from(@current.coordinates).to_f.round(1) %>miles</span>
 	  	</a>
 	  </li>
 	<% end %>

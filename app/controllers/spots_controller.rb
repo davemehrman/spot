@@ -11,7 +11,8 @@ class SpotsController < ApplicationController
     #@spots
     #@lat = params[:lat]
      #@long = params[:long]
-
+    @current = request.location
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @spots }
