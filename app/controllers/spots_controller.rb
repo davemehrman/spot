@@ -9,6 +9,8 @@ class SpotsController < ApplicationController
   # GET /spots.json
   def index
     #@spots
+    #@lat = params[:lat]
+     #@long = params[:long]
 
     respond_to do |format|
       format.html # index.html.erb

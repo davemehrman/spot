@@ -8,11 +8,33 @@
 	<meta name="viewport" content="width=device-width, user-scalable=no">
   <meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<script type="text/javascript" charset="utf-8">
+
+	function findLocation(event) {
+	  event.preventDefault();
+	  navigator.geolocation.getCurrentPosition(foundLocation, noLocation);
+	}
+	function foundLocation(position)
+	{
+
+	  var lat = position.coords.latitude;
+	  var long = position.coords.longitude;
+	  window.location = "<%= new_spot_path%>?lat=" + lat + "&long=" + long;
+	  //alert("<%= new_spot_path%>?lat=" + lat + "&long=" + long);
+	  //alert('Found location: ' + lat + ', ' + long);
+
+	}
+	function noLocation()
+	{
+	  alert('Could not find location');
+	}
+
+	</script>
 </head>
 <body onload="initialize()">
 	<nav id="tab-bar" class="page-spots">
 		<li id="tab-spots">
-			<a href="<%= spots_path %>">Spots</a>
+			<a href="<%= spots_path %>" >Spots</a>
 		</li>
 		<li id="tab-addSpot">
 			<a href="<%= new_spot_path %>" onclick="javascript:findLocation(event);">Add a spot</a>

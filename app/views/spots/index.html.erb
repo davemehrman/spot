@@ -1,11 +1,12 @@
-<%= render :partial => 'location_request' %>
+<%#= render :partial => 'location_request' %>
 <ul id="spots-list" class="table-view table-action">
 	<% @spots.each do |spot| %>
 	  <li>
 	  	<a href="<%=spot_url(spot) %>">
 	  		<h2><%= spot.name %></h2>
-	      <span class="relative-distance">0 miles</span>
+	      <span class="relative-distance"><%= spot.distance_from([41.8989953,-87.62365249999999]).to_f.round(1) %>miles</span>
 	  	</a>
 	  </li>
 	<% end %>
+
 </ul>
