@@ -9,8 +9,18 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
 </head>
-<body>
-
+<body onload="initialize()">
+	<nav id="tab-bar" class="page-spots">
+		<li id="tab-spots">
+			<a href="<%= spots_path %>">Spots</a>
+		</li>
+		<li id="tab-addSpot">
+			<a href="<%= new_spot_path %>" onclick="javascript:findLocation(event);">Add a spot</a>
+		</li>
+		<li id="tab-map">
+			<a href="<%= map_path %>">Map View</a>
+		</li>	
+	</nav><!-- #tab-bar -->
 
 <%= yield %>
 <p id="notice"><%= notice %></p>

@@ -1,15 +1,4 @@
 <%= render :partial => 'location_request' %>
-<nav id="tab-bar" class="page-spots">
-	<li id="tab-spots">
-		<a href="#">Spots</a>
-	</li>
-	<li id="tab-addSpot">
-		<a href="<%= new_spot_path %>" onclick="javascript:findLocation(event);">Add a spot</a>
-	</li>
-	<li id="tab-map">
-		<a href="#">Map View</a>
-	</li>	
-</nav><!-- #tab-bar -->
 <ul id="spots-list" class="table-view table-action">
 	<% @spots.each do |spot| %>
 	  <li>

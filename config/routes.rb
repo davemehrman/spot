@@ -1,4 +1,6 @@
 Skatespot::Application.routes.draw do
+  get "spots/map", :as => :map
+  
   get "sessions/new"
 
   post "sessions/create"

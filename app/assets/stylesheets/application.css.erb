@@ -105,8 +105,22 @@ a:link {
 	color: #111111;
 	height: 4.95em;
 	margin: 0 0 -0.367em;
+	z-index: 10;
+}
+
+#tab-spots a:after {
+	content: url(<%= asset_path 'sprite.png' %>);
+	clip: rect(0 18px 33px 0px);
+	left: 50%;
+	margin-left: -9px;
+	top: 1.833em;
+	position: absolute;
+	
 }
 
 .page-spots #tab-spots a{
 	color: #ebc466;
+}
+#map_canvas { 
+	height: 100%;
 }
